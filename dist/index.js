@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.passAlong = exports.DataLoader = exports.createReducer = exports.createActionNamespace = exports.bindDispatch = exports.AutoTrigger = undefined;
+exports.createSubReducer = exports.composeReducers = exports.createListPassAlong = exports.createListReducer = exports.createPassAlong = exports.DataLoader = exports.createReducer = exports.createActionNamespace = exports.bindDispatch = exports.AutoTrigger = undefined;
 
 var _reducer = require('./reducer');
 
@@ -28,4 +28,8 @@ exports.bindDispatch = _dispatch.bindDispatch;
 exports.createActionNamespace = _actions2.default;
 exports.createReducer = _reducer.createReducer;
 exports.DataLoader = _dataLoader2.default;
-exports.passAlong = _reducer.passAlong;
+exports.createPassAlong = _reducer.createPassAlong;
+exports.createListReducer = _reducer.createListReducer;
+exports.createListPassAlong = _reducer.createListPassAlong;
+exports.composeReducers = _reducer.composeReducers;
+exports.createSubReducer = _reducer.createSubReducer;

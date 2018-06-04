@@ -1,4 +1,11 @@
-import { createReducer, passAlong } from './reducer';
+import {
+  createReducer,
+  createPassAlong,
+  createListReducer,
+  createListPassAlong,
+  composeReducers,
+  createSubReducer
+} from './reducer';
 import { bindDispatch } from './dispatch';
 import createActionNamespace from './actions';
 
@@ -11,5 +18,9 @@ export {
   createActionNamespace,
   createReducer,
   DataLoader,
-  passAlong
+  createPassAlong,
+  createListReducer,
+  createListPassAlong,
+  composeReducers,
+  createSubReducer
 };
