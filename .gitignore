@@ -1,0 +1,9 @@
+node_modules/
+
+.DS_Store
+
+todo.md
+npm-debug.log
+
+/* for now */
+package-lock.json
