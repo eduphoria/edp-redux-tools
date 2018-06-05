@@ -83,6 +83,9 @@ export const createListReducer = (propertyName, reducer, conditional) => (
   state,
   action
 ) => {
+  if (state === null) {
+    return state;
+  }
   const list = state[propertyName] || [];
   const newList = list.reduce((acc, item, idx) => {
     if (conditional(action, item, idx)) {

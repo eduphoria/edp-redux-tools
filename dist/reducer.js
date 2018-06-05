@@ -93,6 +93,9 @@ var createPassAlong = exports.createPassAlong = function createPassAlong() {
  */
 var createListReducer = exports.createListReducer = function createListReducer(propertyName, reducer, conditional) {
   return function (state, action) {
+    if (state === null) {
+      return state;
+    }
     var list = state[propertyName] || [];
     var newList = list.reduce(function (acc, item, idx) {
       if (conditional(action, item, idx)) {
