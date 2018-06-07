@@ -1,3 +1,7 @@
+const color = require('cli-color');
+
+console.log(color.red('hello'));
+
 /**
  * createReducer - An alternative to creating a reducer with switch statement.
  * This function allows an array of reducer enhancers to be passed in.
@@ -17,9 +21,11 @@ export const createReducer = (actions, initialState) => (
   if (action.type in actions) {
     return actions[action.type](state, action);
   }
+
   if ('default' in actions) {
     return actions.default(state, action);
   }
+
   return state;
 };
 
@@ -46,6 +52,12 @@ export const createPassAlong = (
   subreducer,
   conditional = () => true
 ) => (state, action) => {
+  console.log(
+    color.green(
+      'Warning:createPassAlong function will be deprecated. Please use createSubReducer instead.'
+    )
+  );
+
   if (action.$meta && namespaces.includes(action.$meta.namespace)) {
     const oldState = state[prop];
     if (conditional(action, oldState)) {
@@ -86,6 +98,7 @@ export const createListReducer = (propertyName, reducer, conditional) => (
   if (state === null) {
     return state;
   }
+
   const list = state[propertyName] || [];
   const newList = list.reduce((acc, item, idx) => {
     if (conditional(action, item, idx)) {
@@ -93,6 +106,7 @@ export const createListReducer = (propertyName, reducer, conditional) => (
       newAcc[idx] = reducer(item, action);
       return newAcc;
     }
+
     return acc;
   }, list);
 
@@ -123,6 +137,11 @@ export const createListPassAlong = (
   reducer,
   conditional
 ) => {
+  console.log(
+    color.green(
+      'Warning: createListPassAlong function will be deprecated. Please use createListReducer instead.'
+    )
+  );
   const listReducer = createListReducer(propertyName, reducer, conditional);
   return (state, action) => {
     if (action.$meta && namespaces.includes(action.$meta.namespace)) {
