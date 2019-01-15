@@ -33,6 +33,13 @@ export default class AutoTrigger extends React.Component {
     if (this.timer) {
       clearTimeout(this.timer);
     }
+
+    /**
+     * Check whether or not props are pristine one last time
+     */
+    if (!this.props.pristine) {;
+      this.props.trigger();
+    }
   }
 
   render() {

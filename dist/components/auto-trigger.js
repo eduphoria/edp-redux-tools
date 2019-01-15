@@ -64,6 +64,14 @@ var AutoTrigger = function (_React$Component) {
       if (this.timer) {
         clearTimeout(this.timer);
       }
+
+      /**
+       * Check whether or not props are pristine one last time
+       */
+      if (!this.props.pristine) {
+        ;
+        this.props.trigger();
+      }
     }
   }, {
     key: 'render',
