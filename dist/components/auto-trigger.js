@@ -34,21 +34,25 @@ var AutoTrigger = function (_React$Component) {
   }
 
   _createClass(AutoTrigger, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      var _this2 = this;
+
       if (this.timer) {
         clearTimeout(this.timer);
       }
+
       /**
        * After the `debounceTime`, check the `pristine` value.
        * If it is false, call the `trigger` property.
        */
       this.timer = setTimeout(function () {
-        if (!nextProps.pristine) {
-          nextProps.trigger();
+        if (!_this2.props.pristine) {
+          _this2.props.trigger();
         }
       }, this.props.debounceTime);
     }
+
     /**
      * Make sure to clear the timeout when the view unmounts.
      * This will prevent a trigger from firing unexpectedly.
@@ -59,6 +63,14 @@ var AutoTrigger = function (_React$Component) {
     value: function componentWillUnmount() {
       if (this.timer) {
         clearTimeout(this.timer);
+      }
+
+      /**
+       * Check whether or not props are pristine one last time
+       */
+      if (!this.props.pristine) {
+        ;
+        this.props.trigger();
       }
     }
   }, {
