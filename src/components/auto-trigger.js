@@ -37,7 +37,7 @@ export default class AutoTrigger extends React.Component {
     /**
      * Check whether or not props are pristine one last time
      */
-    if (!this.props.pristine) {;
+    if (!this.props.pristine) {
       this.props.trigger();
     }
   }
